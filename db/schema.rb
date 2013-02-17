@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217220332) do
+ActiveRecord::Schema.define(:version => 20130217221135) do
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "lists", ["position"], :name => "index_lists_on_position"
+
+  create_table "nodes", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "nodes", ["ancestry"], :name => "index_nodes_on_ancestry"
+  add_index "nodes", ["position"], :name => "index_nodes_on_position"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
