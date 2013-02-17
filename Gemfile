@@ -28,6 +28,7 @@ gem 'rails_admin'
 gem 'rails_admin-i18n'
 gem 'ancestry'
 gem 'rails_admin_nestable'
+gem 'ffaker'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,7 +1,51 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'ffaker'
+
+User.new.tap do |u|
+  u.email = 'admin@example.com'
+  u.password = 'password'
+  u.save!
+end
+
+10.times do |i|
+  List.new.tap do |l|
+    l.name = Faker::HipsterIpsum.word
+    l.position = i
+    l.save!
+  end
+end
+
+
+5.times do |i|
+  node = Node.new.tap do |n|
+    n.name = Faker::HipsterIpsum.word
+    n.position = i
+    n.save!
+  end
+
+  rand(3).times do |i|
+    first_child = Node.new.tap do |n|
+      n.name = Faker::HipsterIpsum.word
+      n.position = i
+      n.parent = node
+      n.save!
+    end
+
+    rand(3).times do |i|
+      second_child = Node.new.tap do |n|
+        n.name = Faker::HipsterIpsum.word
+        n.position = i
+        n.parent = first_child
+        n.save!
+      end
+
+      rand(3).times do |i|
+        third_child = Node.new.tap do |n|
+          n.name = Faker::HipsterIpsum.word
+          n.position = i
+          n.parent = second_child
+          n.save!
+        end
+      end
+    end
+  end
+end
