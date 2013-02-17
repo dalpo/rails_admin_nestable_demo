@@ -21,6 +21,13 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rails-i18n'
+gem 'devise'
+gem 'devise-i18n'
+gem 'rails_admin'
+gem 'rails_admin-i18n'
+gem 'ancestry'
+gem 'rails_admin_nestable'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
